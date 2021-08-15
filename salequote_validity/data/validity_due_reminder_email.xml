@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="validity_due_reminder_email_template" model="mail.template">
+			<field name="name">Validity Due Date Reminder</field>
+			<field name="model_id" ref="sale.model_sale_order"/>
+			<field name="body_html" type="html">
+				<div style="margin: 0px; padding: 0px;">
+					<p style="margin: 0px; padding: 0px; font-size: 13px;"></p>
+						Dear  ${object.partner_id.name},
+						<br /><br />
+						We wanted to let you know that you order <strong>${object.name}</strong> is due today, <strong>${object.validity_date}</strong>.
+						<br /><br />
+						Order : <strong>${object.name}</strong><br />
+						Order by : <strong>${object.user_id.name}</strong><br />
+						Order Payment : <strong>${object.amount_total}</strong><br />
+						Order Date : ${object.date_order}<br /><br />
+						Feel free to contact us if you have any question.<br /><br />
+
+						% if object.partner_id.company_id:
+						Best regards,<br />
+						from <strong>${object.partner_id.company_id.name | safe}
+						</strong>
+						% endif
+				</div>
+			</field>
+		</record>
+
+		<record id="validity_before_due_reminder_email_template" model="mail.template">
+			<field name="name">Validity before Due Date Reminder</field>
+			<field name="model_id" ref="sale.model_sale_order"/>
+			<field name="body_html" type="html">
+				<div style="margin: 0px; padding: 0px;">
+					<p style="margin: 0px; padding: 0px; font-size: 13px;"></p>
+						Dear  ${object.partner_id.name},
+						<br /><br />
+						This is friendly reminder that your order is going to due. According to our record your order <strong>${object.name}</strong> from
+						<strong>
+							    % if object.partner_id.company_id:
+      							${object.partner_id.company_id.name | safe}
+  								% endif
+  						</strong>
+  						will due on <strong>${object.validity_date}</strong> and only <strong>2 Days</strong> left.
+						<br /><br />
+						Please refer order detail and take necessary action.<br />
+						Order : <strong>${object.name}</strong><br />
+						Expiration Date : <strong>${object.validity_date}</strong><br />
+						Order by : <strong>${object.user_id.name}</strong><br />
+						Order Payment : <strong>${object.amount_total}</strong><br />
+						Order Date : ${object.date_order}<br /><br />
+						Feel free to contact us if you have any question.<br /><br />
+						Thanks in advance,<br />
+				    	% if object.partner_id.company_id:
+						from <strong>${object.partner_id.company_id.name | safe}
+						</strong>
+						% endif
+				</div>
+			</field>
+		</record>
+	</data>
+</odoo>

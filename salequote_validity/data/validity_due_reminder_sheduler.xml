@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+    <record id="validity_due_reminder_scheduler_action" model="ir.cron">
+        <field name="name">Validity Due Date Reminder</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">5</field>
+        <field name="doall" eval="False"/>
+        <field name="state">code</field>
+        <field name="code">model.validity_due_reminder_action_email()</field>
+    </record>
+</odoo>
