@@ -15,7 +15,7 @@
         'data/validity_due_reminder_email.xml',
 		'data/validity_due_reminder_sheduler.xml',
     ],
-    'images': ['images/main.png'],
+    'images': ['images/main.jpeg'],
     'installable': True,
     'auto_install': False,
     'price':26,
